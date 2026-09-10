@@ -46,4 +46,28 @@ These questions aren't here to slow you down — they're part of what's being ev
 
 ## Our Approach
 
-*[To be filled in by the team at the end.]*
+We built **Rice Under Pressure**, a country-level investment-screening dashboard for a European sustainability fund supporting climate-resilient agriculture. It compares Italy, Spain, Greece, and Portugal, ranks them with a transparent Rice Water Investment Priority Score, and helps a fund manager decide which country should move first into due diligence. The dashboard combines water pressure, drought exposure, rice-sector scale, yield opportunity, agricultural water abstraction, and economic importance so the recommendation is both environmentally and commercially grounded.
+
+The app uses committed public-data snapshots rather than live APIs. Users can select countries on an interactive map, compare rankings, inspect raw values and score contributions, change seven relative indicator weights, and review evidence-linked investment themes. It is a comparative screening aid—not an official EU rating, drought forecast, farm-level diagnosis, or promise of returns.
+
+### Run and verify locally
+
+Requirements: Node.js 20+ and pnpm.
+
+```bash
+pnpm install
+pnpm dev
+```
+
+```bash
+pnpm test
+pnpm build
+```
+
+The tests cover country completeness, drought-score reproduction, score bounds, contribution totals, deterministic ranking, all-zero handling, score bands, recommendation rules, and core interface interactions.
+
+### Evidence and limitations
+
+The model uses EEA seasonal WEI+ (2023), a Copernicus European Drought Observatory snapshot (11 August 2026), Eurostat rice production/area/yield (2022–2024 means), EEA agricultural abstraction (2019), FAOSTAT gross rice-production value (2022–2024 mean), and Natural Earth boundaries. No API keys are used.
+
+See [data/SOURCE_MANIFEST.md](data/SOURCE_MANIFEST.md) and [PROJECT_PLAN.md](PROJECT_PLAN.md) for the full evidence record and scoring method. National averages can conceal basin and farm differences; agricultural abstraction is not rice-only water use; the drought input is a dated snapshot rather than a forecast; and every suggested intervention requires local agronomic, legal, water-rights, and financial validation.
