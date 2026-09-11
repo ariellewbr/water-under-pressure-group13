@@ -16,7 +16,7 @@ vi.mock('react-leaflet', () => ({
 }))
 
 describe('investment dashboard', () => {
-  it('shows the decision, four-country ranking, and methodology', () => {
+  it('shows the decision, six-country ranking, and methodology', () => {
     render(<App />)
     expect(screen.getByRole('heading', { name: /where should Europe invest/i })).toBeInTheDocument()
     expect(screen.getByText('Ranking under current priorities')).toBeInTheDocument()
