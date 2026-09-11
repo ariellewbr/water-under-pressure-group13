@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { countries, indicatorOrder } from './data/countries'
 import {
   defaultWeights,
+  decisionBrief,
   indicatorScores,
   investmentThemes,
   rankCountries,
@@ -76,5 +77,13 @@ describe('priority scoring', () => {
       expect(themes.length).toBeGreaterThan(0)
       expect(themes.length).toBeLessThanOrEqual(3)
     }
+  })
+
+  it('turns a scenario into an actionable and transparent decision brief', () => {
+    const brief = decisionBrief(rankCountries(defaultWeights), defaultWeights)
+    expect(brief?.headline).toMatch(/Prioritise Italy/)
+    expect(brief?.summary).toMatch(/points ahead/)
+    expect(brief?.rationale).toMatch(/Water scarcity/)
+    expect(brief?.nextStep).toMatch(/basin and irrigation-district level/)
   })
 })

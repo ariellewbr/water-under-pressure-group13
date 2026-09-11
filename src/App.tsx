@@ -11,6 +11,7 @@ import {
 } from './data/countries'
 import {
   defaultWeights,
+  decisionBrief,
   investmentThemes,
   rankCountries,
   scoreBand,
@@ -76,6 +77,7 @@ function App() {
   const [selectedCode, setSelectedCode] = useState<CountryCode>('ITA')
   const [mapTarget, setMapTarget] = useState<CountryCode | 'ALL'>('ALL')
   const [methodologyOpen, setMethodologyOpen] = useState(false)
+  const [briefOpen, setBriefOpen] = useState(false)
   const [tileErrors, setTileErrors] = useState(0)
   const [countryBoundaries, setCountryBoundaries] = useState<CountryFeatureCollection | null>(null)
   const [boundaryError, setBoundaryError] = useState(false)
@@ -87,6 +89,7 @@ function App() {
   const weightTotal = indicatorOrder.reduce((sum, key) => sum + weights[key], 0)
   const defaultLeader = useMemo(() => rankCountries(defaultWeights)[0], [])
   const weightsAreDefault = indicatorOrder.every((key) => weights[key] === defaultWeights[key])
+  const brief = decisionBrief(ranked, weights)
 
   useEffect(() => {
     if (ranked.length && !ranked.some((country) => country.code === selectedCode)) {
@@ -173,6 +176,12 @@ function App() {
     setWeights((current) => ({ ...current, [key]: value }))
   }
 
+  const copyBrief = async () => {
+    if (!brief) return
+    const text = [brief.headline, brief.summary, brief.rationale, `Next step: ${brief.nextStep}`].join('\n\n')
+    await navigator.clipboard?.writeText(text)
+  }
+
   return (
     <div className="app-shell">
       <header className="site-header">
@@ -194,6 +203,7 @@ function App() {
             Compare water pressure, production scale and economic importance across four rice-growing countries—then
             tune the priorities to match your fund&apos;s mandate.
           </p>
+          <button className="button button--primary" type="button" onClick={() => setBriefOpen(true)}>Create decision brief</button>
         </section>
 
         {leader ? (
@@ -423,6 +433,25 @@ function App() {
               <li>The drought score is a single dated CDI snapshot and is not a forecast.</li>
               <li>Suggested interventions require local agronomic, legal and financial validation.</li>
             </ul>
+          </section>
+        </div>
+      )}
+
+      {briefOpen && brief && (
+        <div className="modal-backdrop" role="presentation" onMouseDown={() => setBriefOpen(false)}>
+          <section className="methodology-modal decision-brief" role="dialog" aria-modal="true" aria-labelledby="brief-title" onMouseDown={(event) => event.stopPropagation()}>
+            <div className="methodology-modal__header">
+              <div><span className="section-kicker">Investment handoff</span><h2 id="brief-title">Decision brief</h2></div>
+              <button className="close-button" onClick={() => setBriefOpen(false)} aria-label="Close decision brief">×</button>
+            </div>
+            <p className="method-intro">A concise record of the current scenario. It is designed to start due diligence, not replace it.</p>
+            <div className="brief-copy">
+              <h3>{brief.headline}</h3>
+              <p>{brief.summary}</p>
+              <p>{brief.rationale}</p>
+              <p><strong>Next step:</strong> {brief.nextStep}</p>
+            </div>
+            <button className="button button--primary" type="button" onClick={copyBrief}>Copy brief</button>
           </section>
         </div>
       )}

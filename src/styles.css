@@ -163,6 +163,11 @@ footer .brand { color: var(--ink); }
 .methodology-modal h2 { margin: 5px 0 0; font-size: 30px; }.methodology-modal h3 { margin: 28px 0 12px; font-size: 15px; }
 .close-button { width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%; background: white; cursor: pointer; font-size: 22px; }
 .method-intro { color: var(--muted); line-height: 1.6; }
+.hero .button { margin-top: 8px; }
+.brief-copy { margin: 24px 0; padding: 22px; border-radius: 16px; background: #e9eee8; }
+.brief-copy h3 { margin: 0 0 14px; font-size: 20px; }
+.brief-copy p { margin: 0 0 13px; color: var(--muted); line-height: 1.6; }
+.brief-copy p:last-child { margin-bottom: 0; color: var(--ink); }
 .formula-card { padding: 20px; border-radius: 16px; background: #e9eee8; }.formula-card span { color: var(--teal); font-size: 10px; text-transform: uppercase; letter-spacing: .1em; font-weight: 800; }.formula-card strong { display: block; margin: 8px 0; font-size: 17px; }.formula-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
 .source-list { display: grid; border-top: 1px solid var(--line); }.source-list a { display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 13px 4px; border-bottom: 1px solid var(--line); text-decoration: none; }.source-list a:hover strong { color: var(--teal); }.source-list strong,.source-list small { display: block; }.source-list strong { font-size: 14px; }.source-list small { margin-top: 3px; color: var(--muted); font-size: 12px; line-height: 1.4; }.source-list b { color: var(--teal); }
 .limit-list { margin: 0; padding-left: 20px; color: var(--muted); font-size: 13px; line-height: 1.65; }

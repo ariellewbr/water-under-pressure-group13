@@ -111,3 +111,27 @@ export function investmentThemes(country: RankedCountry) {
 
   return themes.slice(0, 3)
 }
+
+export function decisionBrief(ranked: RankedCountry[], weights: Weights) {
+  const leader = ranked[0]
+  const runnerUp = ranked[1]
+  if (!leader || !runnerUp) return null
+
+  const weightTotal = indicatorOrder.reduce((sum, key) => sum + Math.max(0, weights[key]), 0)
+  const activePriorities = indicatorOrder
+    .filter((key) => weights[key] > 0)
+    .sort((a, b) => weights[b] - weights[a])
+    .slice(0, 3)
+    .map((key) => `${indicators[key].shortLabel} (${Math.round((weights[key] / weightTotal) * 100)}%)`)
+  const drivers = topDrivers(leader, 2).map((driver) => driver.label.toLowerCase()).join(' and ')
+  const nextStep = investmentThemes(leader)[0]?.title ?? 'Local due diligence'
+
+  return {
+    headline: `Prioritise ${leader.name} for first-stage due diligence`,
+    summary: `${leader.name} ranks #1 with a ${leader.totalScore.toFixed(1)}/100 priority score, ${(
+      leader.totalScore - runnerUp.totalScore
+    ).toFixed(1)} points ahead of ${runnerUp.name}.`,
+    rationale: `The current lens places the greatest emphasis on ${activePriorities.join(', ')}. ${leader.name}'s strongest weighted signals are ${drivers}.`,
+    nextStep: `Validate “${nextStep}” at basin and irrigation-district level before allocating capital.`,
+  }
+}

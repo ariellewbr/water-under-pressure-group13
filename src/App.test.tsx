@@ -41,4 +41,12 @@ describe('investment dashboard', () => {
     expect(screen.getByRole('alert')).toHaveTextContent('Add at least one investment priority')
     expect(screen.getByRole('button', { name: 'Restore defaults' })).toBeInTheDocument()
   })
+
+  it('creates a scenario-specific decision brief', () => {
+    render(<App />)
+    fireEvent.click(screen.getByRole('button', { name: 'Create decision brief' }))
+    expect(screen.getByRole('dialog', { name: 'Decision brief' })).toBeInTheDocument()
+    expect(screen.getByText(/Prioritise Italy for first-stage due diligence/)).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Copy brief' })).toBeInTheDocument()
+  })
 })
