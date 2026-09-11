@@ -12,6 +12,7 @@ export type IndicatorKey =
 export interface CountryDatum {
   code: CountryCode
   name: string
+  capital: string
   flag: string
   region: string
   raw: {
@@ -94,6 +95,7 @@ export const countries: CountryDatum[] = [
   {
     code: 'ITA',
     name: 'Italy',
+    capital: 'Rome',
     flag: '🇮🇹',
     region: 'Po Valley focus',
     raw: {
@@ -114,6 +116,7 @@ export const countries: CountryDatum[] = [
   {
     code: 'ESP',
     name: 'Spain',
+    capital: 'Madrid',
     flag: '🇪🇸',
     region: 'Ebro & Guadalquivir focus',
     raw: {
@@ -134,6 +137,7 @@ export const countries: CountryDatum[] = [
   {
     code: 'GRC',
     name: 'Greece',
+    capital: 'Athens',
     flag: '🇬🇷',
     region: 'Central Macedonia focus',
     raw: {
@@ -154,6 +158,7 @@ export const countries: CountryDatum[] = [
   {
     code: 'PRT',
     name: 'Portugal',
+    capital: 'Lisbon',
     flag: '🇵🇹',
     region: 'Tejo & Mondego focus',
     raw: {
