@@ -33,6 +33,10 @@ const countryCenters: Record<CountryCode, [number, number]> = {
 
 const number = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 1 })
 
+function placeName(country: { name: string; capital: string }) {
+  return `${country.name} · ${country.capital}`
+}
+
 function MapFocus({ target }: { target: CountryCode | 'ALL' }) {
   const map = useMap()
   useEffect(() => {
@@ -152,7 +156,7 @@ function App() {
     const code = feature.properties?.iso_a3
     const item = ranked.find((country) => country.code === code)
     if (!code || !item) return
-    layer.bindTooltip(`<strong>${item.name}</strong><br/>#${item.rank} · ${Math.round(item.totalScore)}/100`, {
+    layer.bindTooltip(`<strong>${placeName(item)}</strong><br/>#${item.rank} · ${Math.round(item.totalScore)}/100`, {
       sticky: true,
       direction: 'top',
       className: 'country-tooltip',
@@ -162,7 +166,7 @@ function App() {
     if (element) {
       element.tabIndex = 0
       element.setAttribute('role', 'button')
-      element.setAttribute('aria-label', `Select ${item.name}, rank ${item.rank}, score ${Math.round(item.totalScore)} out of 100`)
+      element.setAttribute('aria-label', `Select ${placeName(item)}, rank ${item.rank}, score ${Math.round(item.totalScore)} out of 100`)
       element.addEventListener('keydown', (event) => {
         if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault()
@@ -217,7 +221,7 @@ function App() {
                 <div>
                   <span className="country-flag" aria-hidden="true">{leader.flag}</span>
                   <h2>{leader.name}</h2>
-                  <p>{leader.region}</p>
+                  <p>{leader.capital} · {leader.region}</p>
                 </div>
                 <ScoreRing score={leader.totalScore} />
               </div>
@@ -269,6 +273,13 @@ function App() {
                   )}
                   <MapFocus target={mapTarget} />
                 </MapContainer>
+                <div className="map-place-labels" role="list" aria-label="Countries and capitals">
+                  {ranked.map((country) => (
+                    <button className={`map-place-label map-place-label--${country.code}`} key={country.code} type="button" onClick={() => selectCountry(country.code)} role="listitem">
+                      <strong>{country.name}</strong><span>{country.capital}</span>
+                    </button>
+                  ))}
+                </div>
                 {!countryBoundaries && (
                   <div className="map-layer-status" role="status">
                     {boundaryError ? 'Country outlines unavailable · use the comparison cards below' : 'Loading country outlines…'}
@@ -310,7 +321,7 @@ function App() {
                   <div className="country-card__head">
                     <span className="country-card__rank">{String(country.rank).padStart(2, '0')}</span>
                     <span className="country-flag" aria-hidden="true">{country.flag}</span>
-                    <div><h3>{country.name}</h3><span>{country.region}</span></div>
+                    <div><h3>{country.name}</h3><span>{country.capital} · {country.region}</span></div>
                     <ScoreRing score={country.totalScore} size="small" />
                   </div>
                   <div className="country-card__bar"><i style={{ width: `${country.totalScore}%`, background: scoreColor(country.totalScore) }} /></div>
@@ -362,7 +373,7 @@ function App() {
           {selected && (
             <article className="country-analysis">
               <div className="country-analysis__header">
-                <div><span className="section-kicker">Country due-diligence view</span><h2>{selected.flag} {selected.name}</h2><p>{selected.region}</p></div>
+                <div><span className="section-kicker">Country due-diligence view</span><h2>{selected.flag} {selected.name}</h2><p>{selected.capital} · {selected.region}</p></div>
                 <div className="rank-lockup"><span>Current rank</span><strong>#{selected.rank}</strong></div>
               </div>
               <div className="metric-grid">
