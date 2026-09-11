@@ -1,4 +1,4 @@
-const crypto = require('node:crypto')
+import crypto from 'node:crypto'
 
 const COOKIE_NAME = 'rup_session'
 const SESSION_SECONDS = 8 * 60 * 60
@@ -18,16 +18,10 @@ function sign(input, secret) {
 }
 
 function parseCookies(header = '') {
-  return Object.fromEntries(
-    header
-      .split(';')
-      .map((part) => part.trim())
-      .filter(Boolean)
-      .map((part) => {
-        const index = part.indexOf('=')
-        return index === -1 ? [part, ''] : [part.slice(0, index), part.slice(index + 1)]
-      }),
-  )
+  return Object.fromEntries(header.split(';').map((part) => part.trim()).filter(Boolean).map((part) => {
+    const index = part.indexOf('=')
+    return index === -1 ? [part, ''] : [part.slice(0, index), part.slice(index + 1)]
+  }))
 }
 
 function verifyPassword(password, stored) {
@@ -45,7 +39,6 @@ export function credentialsConfigured() {
 export function authenticate(username, password) {
   const configuredUsername = required('AUTH_USERNAME')
   const passwordHash = required('AUTH_PASSWORD_HASH')
-
   if (username !== configuredUsername || !verifyPassword(password, passwordHash)) return null
   return { username: configuredUsername }
 }
@@ -63,7 +56,6 @@ export function verifySessionToken(token) {
   const secret = required('AUTH_JWT_SECRET')
   const parts = token?.split('.')
   if (!parts || parts.length !== 3) return null
-
   const [header, body, signature] = parts
   const expectedSignature = sign(`${header}.${body}`, secret)
   const actual = Buffer.from(signature)
@@ -71,8 +63,9 @@ export function verifySessionToken(token) {
   if (actual.length !== expected.length || !crypto.timingSafeEqual(actual, expected)) return null
 
   try {
+    const parsedHeader = JSON.parse(Buffer.from(header, 'base64url').toString('utf8'))
     const payload = JSON.parse(Buffer.from(body, 'base64url').toString('utf8'))
-    if (payload.alg || payload.typ) return null
+    if (parsedHeader.alg !== 'HS256' || parsedHeader.typ !== 'JWT') return null
     if (typeof payload.sub !== 'string' || typeof payload.exp !== 'number') return null
     if (payload.exp <= Math.floor(Date.now() / 1000)) return null
     return { username: payload.sub }
@@ -84,8 +77,7 @@ export function verifySessionToken(token) {
 export function sessionFromRequest(req) {
   if (!credentialsConfigured()) return null
   const token = parseCookies(req.headers.cookie).rup_session
-  if (!token) return null
-  return verifySessionToken(token)
+  return token ? verifySessionToken(token) : null
 }
 
 export function sessionCookie(token) {
