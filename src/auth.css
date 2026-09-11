@@ -1,0 +1,16 @@
+/* Optional authenticated deployment */
+.auth-shell { width: 100%; min-height: 100vh; padding: 48px 24px; display: grid; place-items: center; background: radial-gradient(circle at 80% 12%, rgba(222,205,156,.3), transparent 24rem), var(--paper-deep); }
+.auth-card { width: min(460px, 100%); padding: 36px; border: 1px solid rgba(24,50,54,.12); border-radius: 24px; background: var(--paper); box-shadow: var(--shadow); }
+.auth-brand { margin-bottom: 42px; }
+.auth-card h1 { margin: 10px 0 12px; font-size: 44px; letter-spacing: -.045em; }
+.auth-card > p { color: var(--muted); line-height: 1.65; }
+.auth-form { display: grid; gap: 18px; margin-top: 28px; }
+.auth-form label { display: grid; gap: 7px; font-size: 13px; font-weight: 700; }
+.auth-form input { width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: white; color: var(--ink); }
+.auth-form input:focus { outline: 3px solid rgba(31,97,91,.15); border-color: var(--teal); }
+.auth-form .button { justify-self: start; min-width: 120px; }
+.auth-form .button:disabled { cursor: wait; opacity: .65; }
+.auth-error { margin: 0; color: var(--red); font-size: 13px; }
+.auth-status { color: var(--muted); font-weight: 600; }
+.auth-session-bar { min-height: 36px; padding: 8px max(24px, calc((100vw - 1392px) / 2)); display: flex; justify-content: flex-end; align-items: center; gap: 14px; background: var(--ink); color: white; font-size: 12px; }
+.auth-signout { border: 0; padding: 0; background: transparent; color: inherit; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
