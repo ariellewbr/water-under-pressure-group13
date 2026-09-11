@@ -28,6 +28,8 @@ const countryCenters: Record<CountryCode, [number, number]> = {
   ESP: [40.2, -3.7],
   GRC: [39.1, 22.9],
   PRT: [39.6, -8.0],
+  FRA: [46.4, 2.2],
+  DEU: [51.2, 10.4],
 }
 
 const number = new Intl.NumberFormat('en-GB', { maximumFractionDigits: 1 })
@@ -191,7 +193,7 @@ function App() {
           <div className="eyebrow">Investment intelligence · Southern Europe</div>
           <h1>Where should Europe invest in <em>sustainable rice?</em></h1>
           <p>
-            Compare water pressure, production scale and economic importance across four rice-growing countries—then
+            Compare water pressure, production scale and economic importance across six European rice-growing countries—then
             tune the priorities to match your fund&apos;s mandate.
           </p>
         </section>
@@ -201,7 +203,7 @@ function App() {
             <article className="recommendation-card">
               <div className="recommendation-card__topline">
                 <span className="pill pill--accent">Recommended first look</span>
-                <span className="rank-note">#1 of 4</span>
+                <span className="rank-note">#1 of 6</span>
               </div>
               <div className="recommendation-heading">
                 <div>
@@ -405,7 +407,7 @@ function App() {
               <div><span className="section-kicker">Evidence room</span><h2 id="methodology-title">Sources & methodology</h2></div>
               <button ref={closeModalButton} className="close-button" onClick={() => setMethodologyOpen(false)} aria-label="Close methodology">×</button>
             </div>
-            <p className="method-intro" id="methodology-summary">The score compares four countries using dated public-data snapshots. It supports screening, not hydrological or financial forecasting.</p>
+            <p className="method-intro" id="methodology-summary">The score compares six countries using dated public-data snapshots. France and Germany are working estimates pending matching country snapshots. It supports screening, not hydrological or financial forecasting.</p>
             <div className="formula-card"><span>Priority score</span><strong>Σ (indicator score × relative weight)</strong><p>Each input is normalised to 0–100. Volume indicators use logarithmic min–max scaling; WEI+ uses the EEA severe-stress threshold; yield is shown as the gap from the highest observed three-year average.</p></div>
             <h3>Public sources</h3>
             <div className="source-list">
