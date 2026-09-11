@@ -44,6 +44,14 @@ These questions aren't here to slow you down — they're part of what's being ev
 - A short paragraph below, written in business language (not technical), explaining what you built, for whom, and why
 - A live URL (Vercel or similar) if you deployed it — not required to still get credit, but expected if you did
 
+## Live Prototype
+
+The team's interactive water-scarcity map is available at
+[water-scarcity-ebon.vercel.app](https://water-scarcity-ebon.vercel.app/).
+
 ## Our Approach
 
-*[To be filled in by the team at the end.]*
+We built an interactive map that makes water-scarcity information easier to
+explore and communicate. It is intended for decision-makers who need a quick,
+visual way to identify where water pressure is concentrated and use that
+shared view to support discussion and prioritisation.
