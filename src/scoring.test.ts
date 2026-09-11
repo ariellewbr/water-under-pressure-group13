@@ -11,7 +11,7 @@ import {
 
 describe('country data', () => {
   it('contains one complete, finite record for each target country', () => {
-    expect(countries.map((country) => country.code).sort()).toEqual(['ESP', 'GRC', 'ITA', 'PRT'])
+    expect(countries.map((country) => country.code).sort()).toEqual(['DEU', 'ESP', 'FRA', 'GRC', 'ITA', 'PRT'])
     for (const country of countries) {
       expect(Object.values(country.raw).every(Number.isFinite)).toBe(true)
     }
