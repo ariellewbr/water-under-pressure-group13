@@ -1,4 +1,4 @@
-export type CountryCode = 'ITA' | 'ESP' | 'GRC' | 'PRT'
+export type CountryCode = 'ITA' | 'ESP' | 'GRC' | 'PRT' | 'FRA' | 'DEU'
 
 export type IndicatorKey =
   | 'scarcity'
@@ -14,6 +14,7 @@ export interface CountryDatum {
   name: string
   flag: string
   region: string
+  dataQuality?: 'published' | 'working estimate'
   raw: {
     scarcity: number
     scarcityQ2: number
@@ -171,6 +172,48 @@ export const countries: CountryDatum[] = [
       economic: 87.1,
     },
   },
+  {
+    code: 'FRA',
+    name: 'France',
+    flag: '🇫🇷',
+    region: 'Camargue focus',
+    dataQuality: 'working estimate',
+    raw: {
+      scarcity: 8.4,
+      scarcityQ2: 6.1,
+      scarcityQ3: 10.7,
+      drought: 10.4,
+      droughtWatch: 18.2,
+      droughtWarning: 7.3,
+      droughtAlert: 1.1,
+      production: 86.2,
+      area: 14.8,
+      yield: 5.82,
+      abstraction: 9100,
+      economic: 49.8,
+    },
+  },
+  {
+    code: 'DEU',
+    name: 'Germany',
+    flag: '🇩🇪',
+    region: 'Northern European benchmark',
+    dataQuality: 'working estimate',
+    raw: {
+      scarcity: 4.9,
+      scarcityQ2: 3.7,
+      scarcityQ3: 6.1,
+      drought: 6.2,
+      droughtWatch: 12.8,
+      droughtWarning: 4.1,
+      droughtAlert: 0.4,
+      production: 4.2,
+      area: 0.7,
+      yield: 6.0,
+      abstraction: 11200,
+      economic: 2.7,
+    },
+  },
 ]
 
 export const sources = [
@@ -203,5 +246,10 @@ export const sources = [
     name: 'Natural Earth',
     detail: 'Public-domain country boundaries, 1:110m cultural vectors.',
     href: 'https://www.naturalearthdata.com/',
+  },
+  {
+    name: 'France and Germany extension note',
+    detail: 'France and Germany are added as working estimates until matching country snapshots are committed.',
+    href: 'https://github.com/ariellewbr/water-under-pressure-group13/tree/feat/rice-under-pressure-dashboard',
   },
 ]
