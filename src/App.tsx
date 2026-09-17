@@ -392,30 +392,11 @@ function App() {
         </section>
 
         <section className="our-approach section" aria-labelledby="our-approach-title">
-          <div className="section-heading">
-            <div>
-              <span className="section-kicker">Our approach</span>
-              <h2 id="our-approach-title">A disciplined screen for water-resilient rice investment</h2>
-            </div>
-            <p>We pair comparable public data with adjustable priorities, then leave final decisions to local due diligence.</p>
-          </div>
-          <div className="approach-steps">
-            <article>
-              <span>01</span>
-              <h3>Compare the pressure</h3>
-              <p>We bring together water scarcity, drought, production, agricultural water use and economic exposure across four rice-growing countries.</p>
-            </article>
-            <article>
-              <span>02</span>
-              <h3>Match the mandate</h3>
-              <p>Use the scenario controls to rebalance the indicators around the objectives that matter to your fund.</p>
-            </article>
-            <article>
-              <span>03</span>
-              <h3>Investigate locally</h3>
-              <p>Use the ranking to focus research on basins, growers and projects where resilient investment could make the strongest case.</p>
-            </article>
-          </div>
+          <span className="section-kicker">Investment thesis</span>
+          <h2 id="our-approach-title">Our Approach</h2>
+          <article className="approach-article">
+            <p>Rice Under Pressure is an investment-screening dashboard for European sustainability funds deciding where to support climate-resilient rice production. It compares Italy, Spain, Greece, and Portugal using seasonal water scarcity, drought exposure, rice output and growing area, yield improvement potential, agricultural water use, and the economic value of rice. Under the default priorities, Italy is the recommended first country to investigate, ranking #1 of 4 with a 68.1 priority score—19.3 points ahead of Spain—because it combines the largest rice sector and economic value with substantial water pressure and agricultural abstraction. The dashboard turns that result into practical next steps, highlighting climate-smart irrigation, measurement and loss reduction, and regional platforms for grower training and shared infrastructure. It is a screening tool for deciding where to begin due diligence, not a final investment decision.</p>
+          </article>
         </section>
       </main>
 
