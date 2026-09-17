@@ -44,14 +44,6 @@ These questions aren't here to slow you down — they're part of what's being ev
 - A short paragraph below, written in business language (not technical), explaining what you built, for whom, and why
 - A live URL (Vercel or similar) if you deployed it — not required to still get credit, but expected if you did
 
-## Live Prototype
-
-The team's interactive water-scarcity map is available at
-[water-scarcity-ebon.vercel.app](https://water-scarcity-ebon.vercel.app/).
-
 ## Our Approach
 
-We built an interactive map that makes water-scarcity information easier to
-explore and communicate. It is intended for decision-makers who need a quick,
-visual way to identify where water pressure is concentrated and use that
-shared view to support discussion and prioritisation.
+Rice Under Pressure is an investment-screening dashboard for European sustainability funds deciding where to support climate-resilient rice production. It compares Italy, Spain, Greece, and Portugal using seasonal water scarcity, drought exposure, rice output and growing area, yield improvement potential, agricultural water use, and the economic value of rice. Under the default priorities, Italy is the recommended first country to investigate, ranking #1 of 4 with a 68.1 priority score—19.3 points ahead of Spain—because it combines the largest rice sector and economic value with substantial water pressure and agricultural abstraction. The dashboard turns that result into practical next steps, highlighting climate-smart irrigation, measurement and loss reduction, and regional platforms for grower training and shared infrastructure. It is a screening tool for deciding where to begin due diligence, not a final investment decision.
