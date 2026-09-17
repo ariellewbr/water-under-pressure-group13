@@ -2,6 +2,10 @@
 
 > This repo is your starting point. Codex should read this README first.
 
+## DISCLAIMER
+
+Although our group worked on the project using one shared computer, every member of our group contributed to its development. The commits may not reflect each individual’s work or account, but the project represents the combined effort and contributions of the entire group.
+
 ## How to Get Started
 
 This repo is a **template**: click **Fork** (top right), not "Use this template." Fork keeps your copy linked back to the original — that's what lets ATELIA automatically find every team's work, without anyone needing to send a link.
