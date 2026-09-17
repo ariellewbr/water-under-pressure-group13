@@ -155,11 +155,9 @@ input[type='range']::-moz-range-thumb { width: 12px; height: 12px; border-radius
 .closing-callout { min-height: 190px; display: grid; grid-template-columns: 1.15fr 1fr auto; align-items: center; gap: 50px; padding: 38px 42px; border-radius: 24px; background: var(--ink); color: white; }
 .closing-callout .section-kicker { color: #d4b96d; }.closing-callout h2 { max-width: 520px; }.closing-callout p { color: #c8d2d1; font-size: 14px; line-height: 1.65; }
 .our-approach { padding-top: 4px; }
-.approach-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-.approach-steps article { min-height: 210px; padding: 26px; border: 1px solid rgba(24,50,54,.12); border-radius: 18px; background: rgba(251,250,246,.76); }
-.approach-steps span { color: #a4987b; font-size: 11px; font-weight: 800; letter-spacing: .1em; }
-.approach-steps h3 { margin: 28px 0 8px; color: var(--ink); font-size: 18px; letter-spacing: -.025em; }
-.approach-steps p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
+.our-approach h2 { margin: 7px 0 22px; color: var(--ink); font-size: 36px; letter-spacing: -.04em; }
+.approach-article { max-width: 1050px; padding: 28px 30px; border-left: 3px solid var(--teal); border-radius: 0 18px 18px 0; background: rgba(251,250,246,.76); }
+.approach-article p { margin: 0; color: #506465; font-size: 16px; line-height: 1.8; }
 footer { height: 108px; display: flex; align-items: center; justify-content: space-between; gap: 20px; border-top: 1px solid rgba(24,50,54,.14); color: var(--muted); font-size: 11px; }
 footer .brand { color: var(--ink); }
 
@@ -178,7 +176,6 @@ footer .brand { color: var(--ink); }
   .recommendation-card { min-height: auto; }
   .sensitivity-note { margin-top: 28px; }
   .country-cards { grid-template-columns: repeat(2,1fr); }
-  .approach-steps { grid-template-columns: 1fr; }
   .closing-callout { grid-template-columns: 1fr 1fr; }.closing-callout .button { grid-column: 1/-1; justify-self: start; }
 }
 
@@ -193,7 +190,7 @@ footer .brand { color: var(--ink); }
   .analysis-grid { display: flex; flex-direction: column; }.country-analysis { order: 1; }.weights-card { order: 2; }.weights-card,.country-analysis { width: 100%; padding: 22px; }
   .metric-grid { grid-template-columns: 1fr; }.improvement-card { align-items: start; }
   .closing-callout { grid-template-columns: 1fr; gap: 18px; padding: 28px; }.closing-callout .button { grid-column: auto; }
-  .approach-steps article { min-height: 0; padding: 22px; }.approach-steps h3 { margin-top: 20px; }
+  .approach-article { padding: 22px; }.approach-article p { font-size: 14px; line-height: 1.7; }
   footer { height: auto; padding: 28px 0; flex-direction: column; align-items: start; }
   .methodology-modal { padding: 24px 19px; }.modal-backdrop { padding: 10px; }
 }
